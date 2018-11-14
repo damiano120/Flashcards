@@ -22,12 +22,15 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private String pathDMB2 = Environment.getExternalStorageDirectory() + "/Flashcards/DirectMethodBook2.txt";
+    private String pathDMB3 = Environment.getExternalStorageDirectory() + "/Flashcards/DirectMethodBook3.txt";
     private String pathA1 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsA1.txt";
     private String pathA2 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsA2.txt";
     private String pathB1 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsB1.txt";
     private String pathB2 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsB2.txt";
     private String pathC1 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsC1.txt";
     private String pathC2 = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsC2.txt";
+    private String pathAll = Environment.getExternalStorageDirectory() + "/Flashcards/FlashcardsAll.txt";
     private String filename = "Flashcards";
     private HashMap<String, String> englishFlashcards;
     private HashMap<String, String> polishFlashcards;
@@ -141,12 +144,17 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.englishGameBtn:
                 intent = new Intent(this, ChooseLevel.class);
+                intent.putExtra("pathDMB2", pathDMB2);
+                intent.putExtra("pathDMB3", pathDMB3);
                 intent.putExtra("pathA1", pathA1);
                 intent.putExtra("pathA2", pathA2);
                 intent.putExtra("pathB1", pathB1);
                 intent.putExtra("pathB2", pathB2);
                 intent.putExtra("pathC1", pathC1);
                 intent.putExtra("pathC2", pathC2);
+                intent.putExtra("pathAll", pathAll);
+                intent.putExtra("DMB2", "Direct Method book 2");
+                intent.putExtra("DMB3", "Direct Method book 3");
                 intent.putExtra("A1", "A1  Beginner/elementary");
                 intent.putExtra("A2", "A2  Pre-Intermediate");
                 intent.putExtra("B1", "B1  Intermediate");
@@ -160,12 +168,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.polishGameBtn:
                 intent = new Intent(this, ChooseLevel.class);
+                intent.putExtra("pathDMB2", pathDMB2);
+                intent.putExtra("pathDMB3", pathDMB3);
                 intent.putExtra("pathA1", pathA1);
                 intent.putExtra("pathA2", pathA2);
                 intent.putExtra("pathB1", pathB1);
                 intent.putExtra("pathB2", pathB2);
                 intent.putExtra("pathC1", pathC1);
                 intent.putExtra("pathC2", pathC2);
+                intent.putExtra("pathAll", pathAll);
+                intent.putExtra("DMB2", "Direct Method książka 2");
+                intent.putExtra("DMB3", "Direct Method książka 3");
                 intent.putExtra("A1", "A1  Początkujący");
                 intent.putExtra("A2", "A2  Początkujący-pośredni");
                 intent.putExtra("B1", "B1  Pośredni");
@@ -180,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.addBtn:
                 intent = new Intent(this, AddNewFlashcard.class);
                 intent.putExtra("filename", filename);
-                intent.putExtra("pathA1", pathA1);
+                intent.putExtra("pathAll", pathAll);
                 intent.putExtra("englishMap", englishFlashcards);
                 intent.putExtra("polishMap", polishFlashcards);
                 startActivity(intent);

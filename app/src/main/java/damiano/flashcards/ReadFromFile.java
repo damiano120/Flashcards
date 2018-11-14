@@ -84,9 +84,14 @@ public class ReadFromFile {
         String temp = null;
         englishFlashcards = new HashMap<>();
         polishFlashcards = new HashMap<>();
+        String[] tab = null;
         while (scanner.hasNextLine()) {
             temp = scanner.nextLine();
-            String[] tab = temp.split("–");
+            if (temp.contains("-")) {
+                tab = temp.split("-");
+            } else if (temp.contains("–")) {
+                tab = temp.split("–");
+            }
             englishFlashcards.put(tab[0], tab[1]);
             polishFlashcards.put(tab[1], tab[0]);
         }
